@@ -13,12 +13,12 @@ public class Idea {
     private String summary;
     private String details;
     private String priority;
-    private String references;
+    private String ideaReferences;
 
-    public Idea(String summary, String details, String priority, String references) {
+    public Idea(String summary, String details, String priority, String ideaReferences) {
         this.summary = summary;
         this.details = details;
         this.priority = priority;
-        this.references = references;
+        this.ideaReferences = ideaReferences;
     }
 }

@@ -8,7 +8,7 @@
 		<version>2.6.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cztech</groupId>
+	<groupId>com.tracker</groupId>
 	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProjectTracker</name>
@@ -46,6 +46,16 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.3.10</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -70,6 +80,11 @@
                     <target>16</target>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>8.3.0</version>
+			</plugin>
         </plugins>
 	</build>
 
