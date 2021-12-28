@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -20,5 +23,10 @@ public class UserController {
     @PostMapping("/signup")
     public void signUp(@RequestBody User user){
         userService.signUp(user);
+    }
+
+    @PostMapping("/login")
+    public Optional<User> login(@RequestBody Map<String, String> info){
+        return userService.login(info);
     }
 }

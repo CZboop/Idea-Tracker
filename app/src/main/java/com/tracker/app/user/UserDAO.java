@@ -11,4 +11,6 @@ public interface UserDAO {
     Optional<User> findByEmail(String email);
 
     void signUp(User user);
+
+    Optional<User> login(String email, String password);
 }

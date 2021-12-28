@@ -2,6 +2,9 @@ package com.tracker.app.user;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -16,5 +19,9 @@ public class UserService {
     public void signUp(User user) {
 //        TODO: validation before adding
         userDAO.signUp(user);
+    }
+
+    public Optional<User> login(Map<String, String> info) {
+        return userDAO.login(info.get("email"), info.get("password"));
     }
 }
