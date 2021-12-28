@@ -13,4 +13,6 @@ public interface UserDAO {
     void signUp(User user);
 
     Optional<User> login(String email, String password);
+
+    Optional<User> userExists(User user);
 }

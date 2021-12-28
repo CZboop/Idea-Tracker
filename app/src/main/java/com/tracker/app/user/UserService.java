@@ -18,7 +18,6 @@ public class UserService {
         this.emailValidator = emailValidator;
     }
 
-
     public void signUp(User user) {
 //        TODO: validation before adding
         boolean isValidEmail = emailValidator.
@@ -31,5 +30,9 @@ public class UserService {
 
     public Optional<User> login(Map<String, String> info) {
         return userDAO.login(info.get("email"), info.get("password"));
+    }
+
+    public boolean userExists(User user){
+        return userDAO.userExists(user).isPresent();
     }
 }
