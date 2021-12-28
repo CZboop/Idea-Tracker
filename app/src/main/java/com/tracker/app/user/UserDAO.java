@@ -6,10 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-@Repository
-@Transactional(readOnly = true)
-public interface UserDAO extends JpaRepository<User, Long> {
+public interface UserDAO {
 
     Optional<User> findByEmail(String email);
 
+    void signUp(User user);
 }

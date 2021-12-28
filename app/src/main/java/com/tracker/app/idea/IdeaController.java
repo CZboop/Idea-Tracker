@@ -1,5 +1,6 @@
 package com.tracker.app.idea;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class IdeaController {
 
     private IdeaService ideaService;
 
+    @Autowired
     public IdeaController(IdeaService ideaService) {
         this.ideaService = ideaService;
     }
