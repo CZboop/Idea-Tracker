@@ -23,4 +23,9 @@ public class IdeaController {
     public void addIdea(@RequestBody Idea idea){
         ideaService.addIdea(idea);
     }
+
+    @PutMapping("/update")
+    public void updateIdea(@RequestBody Idea idea){
+        ideaService.updateIdea(idea);
+    }
 }

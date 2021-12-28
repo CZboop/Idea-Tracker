@@ -20,4 +20,8 @@ public class IdeaService {
     public void addIdea(Idea idea) {
         ideaDAO.addIdea(idea);
     }
+
+    public void updateIdea(Idea idea) {
+        ideaDAO.updateIdea(idea);
+    }
 }

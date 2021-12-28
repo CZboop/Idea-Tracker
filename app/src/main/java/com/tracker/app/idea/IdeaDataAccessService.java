@@ -32,4 +32,12 @@ public class IdeaDataAccessService implements IdeaDAO{
                 """;
         jdbcTemplate.update(sql, idea.getSummary(), idea.getDetails(), idea.getPriority(), idea.getUserId());
     }
+
+    @Override
+    public void updateIdea(Idea idea){
+        String sql = """
+                UPDATE idea SET summary = ?, details = ?, priority = ?, user_id = ? WHERE id = ?;
+                """;
+        jdbcTemplate.update(sql, idea.getSummary(), idea.getDetails(), idea.getPriority(), idea.getUserId(), idea.getId());
+    }
 }

@@ -7,4 +7,6 @@ public interface IdeaDAO {
     public List<Idea> getAllIdeas();
 
     public void addIdea(Idea idea);
+
+    public void updateIdea(Idea idea);
 }
