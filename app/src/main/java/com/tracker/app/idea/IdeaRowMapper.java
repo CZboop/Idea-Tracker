@@ -14,7 +14,8 @@ public class IdeaRowMapper implements RowMapper<Idea> {
                 rs.getString("summary"),
                 rs.getString("details"),
                 rs.getString("priority"),
-                rs.getString("idea_references")
+                rs.getString("idea_references"),
+                rs.getInt("user_id")
         );
         return idea;
     }
