@@ -1,8 +1,6 @@
 package com.tracker.app.idea;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,10 @@ public class IdeaController {
     @GetMapping("/getall")
     public List<Idea> getAllIdeas(){
         return ideaService.getAllIdeas();
+    }
+
+    @PostMapping("/add")
+    public void addIdea(@RequestBody Idea idea){
+        ideaService.addIdea(idea);
     }
 }

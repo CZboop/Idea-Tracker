@@ -14,15 +14,13 @@ public class Idea {
     private String summary;
     private String details;
     private String priority;
-    private String ideaReferences;
     private int userId;
 
-    public Idea(int id, String summary, String details, String priority, String ideaReferences, int userId) {
+    public Idea(int id, String summary, String details, String priority, int userId) {
         this.id = id;
         this.summary = summary;
         this.details = details;
         this.priority = priority;
-        this.ideaReferences = ideaReferences;
         this.userId = userId;
     }
 }

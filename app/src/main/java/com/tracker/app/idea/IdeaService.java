@@ -16,4 +16,8 @@ public class IdeaService {
     public List<Idea> getAllIdeas() {
         return ideaDAO.getAllIdeas();
     }
+
+    public void addIdea(Idea idea) {
+        ideaDAO.addIdea(idea);
+    }
 }

@@ -24,4 +24,12 @@ public class IdeaDataAccessService implements IdeaDAO{
         List<Idea> ideasList = jdbcTemplate.query(sql, new IdeaRowMapper());
         return ideasList;
     }
+
+    @Override
+    public void addIdea(Idea idea){
+        String sql = """
+                INSERT INTO idea (summary, details, priority, user_id ) VALUES (?, ?, ?, ?);
+                """;
+        jdbcTemplate.update(sql, idea.getSummary(), idea.getDetails(), idea.getPriority(), idea.getUserId());
+    }
 }
