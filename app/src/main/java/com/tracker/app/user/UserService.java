@@ -25,6 +25,9 @@ public class UserService {
         if (!isValidEmail){
             throw new IllegalStateException(String.format("%s is not a valid email", user.getEmail()));
         }
+        if (userExists(user)){
+            throw new IllegalStateException("This email is already in use");
+        }
         userDAO.signUp(user);
     }
 
