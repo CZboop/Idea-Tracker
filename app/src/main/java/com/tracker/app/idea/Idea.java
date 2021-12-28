@@ -10,12 +10,14 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class Idea {
+    private int id;
     private String summary;
     private String details;
     private String priority;
     private String ideaReferences;
 
-    public Idea(String summary, String details, String priority, String ideaReferences) {
+    public Idea(int id, String summary, String details, String priority, String ideaReferences) {
+        this.id = id;
         this.summary = summary;
         this.details = details;
         this.priority = priority;
