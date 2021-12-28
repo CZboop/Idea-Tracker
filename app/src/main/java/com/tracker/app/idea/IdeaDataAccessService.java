@@ -40,4 +40,12 @@ public class IdeaDataAccessService implements IdeaDAO{
                 """;
         jdbcTemplate.update(sql, idea.getSummary(), idea.getDetails(), idea.getPriority(), idea.getUserId(), idea.getId());
     }
+
+    @Override
+    public void deleteIdea(int id){
+        String sql = """
+                DELETE FROM idea WHERE id = ?;
+                """;
+        jdbcTemplate.update(sql, id);
+    }
 }

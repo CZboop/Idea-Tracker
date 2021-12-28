@@ -24,4 +24,8 @@ public class IdeaService {
     public void updateIdea(Idea idea) {
         ideaDAO.updateIdea(idea);
     }
+
+    public void deleteIdea(int id) {
+        ideaDAO.deleteIdea(id);
+    }
 }

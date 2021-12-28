@@ -28,4 +28,9 @@ public class IdeaController {
     public void updateIdea(@RequestBody Idea idea){
         ideaService.updateIdea(idea);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteIdea(@PathVariable int id){
+        ideaService.deleteIdea(id);
+    }
 }
