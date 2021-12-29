@@ -36,4 +36,14 @@ public class TicketDataAccessService implements TicketDAO{
         List<Ticket> ticketList= jdbcTemplate.query(sql, ticketRowMapper, id);
         return ticketList;
     }
+
+    @Override
+    public void updateTicket(Ticket ticket, int id){
+        String sql = """
+                UPDATE tickets SET title = ?, info = ?, ticket_type = ?, is_completed = ?
+                WHERE id = ?;
+                """;
+        jdbcTemplate.update(sql, ticket.getTitle(), ticket.getInfo(),
+                ticket.getTicketType().name(), ticket.getIsCompleted(), id);
+    }
 }

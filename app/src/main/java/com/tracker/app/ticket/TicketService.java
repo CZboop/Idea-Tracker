@@ -22,4 +22,8 @@ public class TicketService {
     public List<Ticket> getTicketsForProject(int id) {
         return ticketDAO.getTicketsForProject(id);
     }
+
+    public void updateTicket(Ticket ticket, int id) {
+        ticketDAO.updateTicket(ticket, id);
+    }
 }

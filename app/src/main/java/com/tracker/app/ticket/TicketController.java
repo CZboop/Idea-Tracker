@@ -27,4 +27,9 @@ public class TicketController {
     public List<Ticket> getTicketsForProject(@PathVariable int id){
         return ticketService.getTicketsForProject(id);
     }
+
+    @PutMapping("/update/{id}")
+    public void updateTicket(@RequestBody Ticket ticket, @PathVariable int id){
+        ticketService.updateTicket(ticket, id);
+    }
 }
