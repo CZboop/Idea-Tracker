@@ -18,9 +18,10 @@ public class Ticket {
     private Type ticketType;
     private Boolean isCompleted;
     private String dateCreated;
+    private String dateCompleted;
 
     public Ticket(Long id, Long projectId, String title, String info, Type ticketType,
-                  Boolean isCompleted, String dateCreated) {
+                  Boolean isCompleted, String dateCreated, String dateCompleted) {
         this.id = id;
         this.projectId = projectId;
         this.title = title;
@@ -28,5 +29,6 @@ public class Ticket {
         this.ticketType = ticketType;
         this.isCompleted = isCompleted;
         this.dateCreated = dateCreated;
+        this.dateCompleted = dateCompleted;
     }
 }
