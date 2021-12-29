@@ -39,6 +39,10 @@ public class UserService {
         one lowercase letter, one number and one special character
         """);
         }
+        boolean usernameInUse = usernameExists(user.getUsername());
+        if (usernameInUse){
+            throw new IllegalStateException("This username is already in use");
+        }
         userDAO.signUp(user);
     }
 
@@ -53,4 +57,9 @@ public class UserService {
     public boolean userExistsById(int id){
         return userDAO.userExistsById(id).isPresent();
     }
+
+    public boolean usernameExists(String username){
+        return userDAO.usernameExists(username).isPresent();
+    }
+
 }

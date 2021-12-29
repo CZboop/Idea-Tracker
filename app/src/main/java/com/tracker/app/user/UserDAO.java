@@ -17,4 +17,6 @@ public interface UserDAO {
     Optional<User> userExists(User user);
 
     Optional<User> userExistsById(int id);
+
+    Optional<User> usernameExists(String username);
 }
