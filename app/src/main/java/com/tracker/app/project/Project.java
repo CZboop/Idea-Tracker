@@ -13,15 +13,22 @@ import java.util.ArrayList;
 @EqualsAndHashCode
 @ToString
 public class Project {
+    private Long id;
+    private Long userId;
     private String name;
     private String details;
-    private ArrayList<Ticket> issues;
-    private ArrayList<Ticket> toDo;
+    private Status status;
+    private String priority;
+    private ArrayList<Ticket> tickets;
 
-    public Project(String name, String details, ArrayList<Ticket> issues, ArrayList<Ticket> toDo) {
+    public Project(Long id, Long userId, String name, String details, Status status,
+                   String priority, ArrayList<Ticket> tickets) {
+        this.id = id;
+        this.userId = userId;
         this.name = name;
         this.details = details;
-        this.issues = issues;
-        this.toDo = toDo;
+        this.status = status;
+        this.priority = priority;
+        this.tickets = tickets;
     }
 }
