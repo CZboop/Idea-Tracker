@@ -13,4 +13,13 @@ public class ProjectDataAccessService implements ProjectDAO{
     public ProjectDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+
+    @Override
+    public void addProject(Project project){
+        String sql = """
+                INSERT INTO projects (user_id, title, details, status, priority) VALUES (?, ?, ?, ?, ?);
+                """;
+        jdbcTemplate.update(sql, project.getUserId(), project.getTitle(), project.getDetails(),
+                project.getStatus().name(), project.getPriority());
+    }
 }

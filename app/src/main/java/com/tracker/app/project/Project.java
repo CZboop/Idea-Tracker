@@ -15,17 +15,17 @@ import java.util.ArrayList;
 public class Project {
     private Long id;
     private Long userId;
-    private String name;
+    private String title;
     private String details;
     private Status status;
     private String priority;
     private ArrayList<Ticket> tickets;
 
-    public Project(Long id, Long userId, String name, String details, Status status,
+    public Project(Long id, Long userId, String title, String details, Status status,
                    String priority, ArrayList<Ticket> tickets) {
         this.id = id;
         this.userId = userId;
-        this.name = name;
+        this.title = title;
         this.details = details;
         this.status = status;
         this.priority = priority;

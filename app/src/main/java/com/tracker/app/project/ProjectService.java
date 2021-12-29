@@ -12,4 +12,8 @@ public class ProjectService {
     public ProjectService(ProjectDAO projectDAO) {
         this.projectDAO = projectDAO;
     }
+
+    public void addProject(Project project) {
+        projectDAO.addProject(project);
+    }
 }
