@@ -1,6 +1,5 @@
 package com.tracker.app.project;
 
-import com.tracker.app.user.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
