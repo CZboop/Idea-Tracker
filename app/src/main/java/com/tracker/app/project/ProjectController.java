@@ -25,4 +25,9 @@ public class ProjectController {
     public List<Project> getUserProjects(@PathVariable int id){
         return projectService.getUserProjects(id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteProject(@PathVariable int id){
+        projectService.deleteProject(id);
+    }
 }

@@ -22,4 +22,8 @@ public class ProjectService {
     public List<Project> getUserProjects(int id) {
         return projectDAO.getUserProjects(id);
     }
+
+    public void deleteProject(int id) {
+        projectDAO.deleteProject(id);
+    }
 }

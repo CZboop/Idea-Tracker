@@ -36,4 +36,12 @@ public class ProjectDataAccessService implements ProjectDAO{
         List<Project> userProjects = jdbcTemplate.query(sql, projectRowMapper, id);
         return userProjects;
     }
+
+    @Override
+    public void deleteProject(int id){
+        String sql = """
+                DELETE FROM projects WHERE id = ?;
+                """;
+        jdbcTemplate.update(sql, id);
+    }
 }
