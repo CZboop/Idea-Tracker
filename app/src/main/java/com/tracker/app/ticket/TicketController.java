@@ -1,11 +1,11 @@
 package com.tracker.app.ticket;
 
 
+import com.tracker.app.project.Project;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/ticket")
@@ -21,5 +21,10 @@ public class TicketController {
     @PostMapping("/add")
     public void addTicket(@RequestBody Ticket ticket){
         ticketService.addTicket(ticket);
+    }
+
+    @GetMapping("/getproject/{id}")
+    public List<Ticket> getTicketsForProject(@PathVariable int id){
+        return ticketService.getTicketsForProject(id);
     }
 }
