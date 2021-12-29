@@ -12,14 +12,14 @@ import lombok.ToString;
 public class Ticket {
     private String title;
     private String info;
-    private String type;
+    private Type ticketType;
     private Boolean isCompleted;
     private String dateCreated;
 
-    public Ticket(String title, String info, String type, Boolean isCompleted, String dateCreated) {
+    public Ticket(String title, String info, Type ticketType, Boolean isCompleted, String dateCreated) {
         this.title = title;
         this.info = info;
-        this.type = type;
+        this.ticketType = ticketType;
         this.isCompleted = isCompleted;
         this.dateCreated = dateCreated;
     }
