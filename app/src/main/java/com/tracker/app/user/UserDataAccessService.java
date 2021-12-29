@@ -46,4 +46,12 @@ public class UserDataAccessService implements UserDAO {
                 """;
         return jdbcTemplate.query(sql, userRowMapper, user.getEmail()).stream().findFirst();
     }
+
+    @Override
+    public Optional<User> userExistsById(int id){
+        String sql = """
+                SELECT * FROM users WHERE id = ?;
+                """;
+        return jdbcTemplate.query(sql, userRowMapper, id).stream().findFirst();
+    }
 }

@@ -22,7 +22,6 @@ public class UserService {
     }
 
     public void signUp(User user) {
-//        TODO: validation before adding
         boolean isValidEmail = emailValidator.
                 test(user.getEmail());
         if (!isValidEmail){
@@ -49,5 +48,9 @@ public class UserService {
 
     public boolean userExists(User user){
         return userDAO.userExists(user).isPresent();
+    }
+
+    public boolean userExistsById(int id){
+        return userDAO.userExistsById(id).isPresent();
     }
 }

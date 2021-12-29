@@ -15,4 +15,6 @@ public interface UserDAO {
     Optional<User> login(String email, String password);
 
     Optional<User> userExists(User user);
+
+    Optional<User> userExistsById(int id);
 }

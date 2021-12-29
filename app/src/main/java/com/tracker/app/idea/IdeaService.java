@@ -1,5 +1,6 @@
 package com.tracker.app.idea;
 
+import com.tracker.app.user.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +9,11 @@ import java.util.List;
 public class IdeaService {
 
     private IdeaDAO ideaDAO;
+    private UserService userService;
 
-    public IdeaService(IdeaDAO ideaDAO) {
+    public IdeaService(IdeaDAO ideaDAO, UserService userService) {
         this.ideaDAO = ideaDAO;
+        this.userService = userService;
     }
 
     public List<Idea> getAllIdeas() {
@@ -18,6 +21,10 @@ public class IdeaService {
     }
 
     public void addIdea(Idea idea) {
+        boolean userIsValid = userService.userExistsById(idea.getUserId());
+        if (!userIsValid){
+            throw new IllegalStateException("User not found");
+        }
         ideaDAO.addIdea(idea);
     }
 
