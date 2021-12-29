@@ -12,4 +12,8 @@ public class TicketService {
     public TicketService(TicketDAO ticketDAO) {
         this.ticketDAO = ticketDAO;
     }
+
+    public void addTicket(Ticket ticket) {
+        ticketDAO.addTicket(ticket);
+    }
 }
