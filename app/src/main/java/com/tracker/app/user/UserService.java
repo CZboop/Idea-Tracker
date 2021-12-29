@@ -1,6 +1,7 @@
 package com.tracker.app.user;
 
 import com.tracker.app.validation.EmailValidator;
+import com.tracker.app.validation.PasswordValidator;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -12,10 +13,12 @@ public class UserService {
     private final UserDAO userDAO;
     private final static String UserNotFoundMessage = "User with email %s not found";
     private final EmailValidator emailValidator;
+    private final PasswordValidator passwordValidator;
 
-    public UserService(UserDAO userDAO, EmailValidator emailValidator) {
+    public UserService(UserDAO userDAO, EmailValidator emailValidator, PasswordValidator passwordValidator) {
         this.userDAO = userDAO;
         this.emailValidator = emailValidator;
+        this.passwordValidator = passwordValidator;
     }
 
     public void signUp(User user) {
@@ -27,6 +30,15 @@ public class UserService {
         }
         if (userExists(user)){
             throw new IllegalStateException("This email is already in use");
+        }
+        boolean isStrongPassword = passwordValidator
+                .test(user.getPassword());
+        if (!isStrongPassword){
+            throw new IllegalStateException("""
+        Password isn't strong enough. 
+        Please enter a password with at least eight characters, including at least one uppercase letter, 
+        one lowercase letter, one number and one special character
+        """);
         }
         userDAO.signUp(user);
     }
