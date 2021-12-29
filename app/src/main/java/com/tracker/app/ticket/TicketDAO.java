@@ -9,4 +9,6 @@ public interface TicketDAO {
     List<Ticket> getTicketsForProject(int id);
 
     void updateTicket(Ticket ticket, int id);
+
+    void deleteTicket(int id);
 }

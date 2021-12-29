@@ -32,4 +32,9 @@ public class TicketController {
     public void updateTicket(@RequestBody Ticket ticket, @PathVariable int id){
         ticketService.updateTicket(ticket, id);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteTicket(@PathVariable int id){
+        ticketService.deleteTicket(id);
+    }
 }

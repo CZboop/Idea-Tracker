@@ -26,4 +26,8 @@ public class TicketService {
     public void updateTicket(Ticket ticket, int id) {
         ticketDAO.updateTicket(ticket, id);
     }
+
+    public void deleteTicket(int id) {
+        ticketDAO.deleteTicket(id);
+    }
 }

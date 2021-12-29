@@ -46,4 +46,12 @@ public class TicketDataAccessService implements TicketDAO{
         jdbcTemplate.update(sql, ticket.getTitle(), ticket.getInfo(),
                 ticket.getTicketType().name(), ticket.getIsCompleted(), id);
     }
+
+    @Override
+    public void deleteTicket(int id){
+        String sql = """
+                DELETE FROM tickets WHERE id = ?;
+                """;
+        jdbcTemplate.update(sql, id);
+    }
 }
