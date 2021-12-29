@@ -44,4 +44,13 @@ public class ProjectDataAccessService implements ProjectDAO{
                 """;
         jdbcTemplate.update(sql, id);
     }
+
+    @Override
+    public void updateProject(int id, Project project){
+        String sql = """
+                UPDATE projects SET title = ?, details = ?, status = ?, priority = ?
+                WHERE id = ? 
+                """;
+        jdbcTemplate.update(sql, project.getTitle(), project.getDetails(), project.getStatus().name(), project.getPriority(), id);
+    }
 }

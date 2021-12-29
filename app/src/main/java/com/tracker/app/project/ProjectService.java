@@ -26,4 +26,8 @@ public class ProjectService {
     public void deleteProject(int id) {
         projectDAO.deleteProject(id);
     }
+
+    public void updateProject(int id, Project project) {
+        projectDAO.updateProject(id, project);
+    }
 }

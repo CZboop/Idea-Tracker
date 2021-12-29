@@ -9,4 +9,6 @@ public interface ProjectDAO {
     List<Project> getUserProjects(int id);
 
     void deleteProject(int id);
+
+    void updateProject(int id, Project project);
 }
