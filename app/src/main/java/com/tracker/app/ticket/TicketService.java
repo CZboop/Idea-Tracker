@@ -19,7 +19,7 @@ public class TicketService {
         ticketDAO.addTicket(ticket);
     }
 
-    public List<Ticket> getTicketsForProject(int id) {
+    public List<Ticket> getTicketsForProject(Long id) {
         return ticketDAO.getTicketsForProject(id);
     }
 

@@ -29,7 +29,7 @@ public class TicketDataAccessService implements TicketDAO{
     }
 
     @Override
-    public List<Ticket> getTicketsForProject(int id){
+    public List<Ticket> getTicketsForProject(Long id){
         String sql = """
                 SELECT * FROM tickets WHERE project_id = ?;
                 """;

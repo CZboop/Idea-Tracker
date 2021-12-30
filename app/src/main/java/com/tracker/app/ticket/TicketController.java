@@ -24,7 +24,7 @@ public class TicketController {
     }
 
     @GetMapping("/getproject/{id}")
-    public List<Ticket> getTicketsForProject(@PathVariable int id){
+    public List<Ticket> getTicketsForProject(@PathVariable Long id){
         return ticketService.getTicketsForProject(id);
     }
 

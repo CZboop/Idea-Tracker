@@ -6,7 +6,7 @@ public interface TicketDAO {
 
     void addTicket(Ticket ticket);
 
-    List<Ticket> getTicketsForProject(int id);
+    List<Ticket> getTicketsForProject(Long id);
 
     void updateTicket(Ticket ticket, int id);
 
