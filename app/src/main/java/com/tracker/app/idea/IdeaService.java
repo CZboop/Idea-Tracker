@@ -1,5 +1,6 @@
 package com.tracker.app.idea;
 
+import com.tracker.app.exception.ResourceNotFound;
 import com.tracker.app.user.UserService;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,16 @@ public class IdeaService {
 
     public void deleteIdea(int id) {
         ideaDAO.deleteIdea(id);
+    }
+
+    public void makeProjectFromIdeaId(int id) {
+//        steps - get idea object from db
+//        - make project object from idea object
+//        - add project to database
+//        - delete idea from ideas db?
+    }
+
+    public Idea getIdeaById(int id) {
+        return ideaDAO.getIdeaById(id).orElseThrow(IllegalStateException::new);
     }
 }

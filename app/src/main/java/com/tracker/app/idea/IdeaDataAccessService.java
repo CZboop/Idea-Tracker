@@ -5,14 +5,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class IdeaDataAccessService implements IdeaDAO{
 
     private JdbcTemplate jdbcTemplate;
+    private IdeaRowMapper ideaRowMapper;
 
     public IdeaDataAccessService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.ideaRowMapper = new IdeaRowMapper();
     }
 
     @Override
@@ -47,5 +50,13 @@ public class IdeaDataAccessService implements IdeaDAO{
                 DELETE FROM idea WHERE id = ?;
                 """;
         jdbcTemplate.update(sql, id);
+    }
+
+    @Override
+    public Optional<Idea> getIdeaById(int id){
+        String sql = """
+                SELECT * FROM idea WHERE id = ?
+                """;
+        return jdbcTemplate.query(sql, ideaRowMapper, id).stream().findFirst();
     }
 }

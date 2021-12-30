@@ -35,4 +35,14 @@ public class IdeaController {
     public void deleteIdea(@PathVariable int id){
         ideaService.deleteIdea(id);
     }
+
+    @PostMapping("/makeproject/{id}")
+    public void makeProjectFromIdeaId(@PathVariable int id){
+        ideaService.makeProjectFromIdeaId(id);
+    }
+
+    @GetMapping("/getidea/{id}")
+    public Idea getIdeaById(@PathVariable int id){
+        return ideaService.getIdeaById(id);
+    }
 }
