@@ -59,4 +59,14 @@ public class IdeaDataAccessService implements IdeaDAO{
                 """;
         return jdbcTemplate.query(sql, ideaRowMapper, id).stream().findFirst();
     }
+
+    @Override
+    public List<Idea> getUserIdeas(Long id){
+        String sql = """
+                SELECT * FROM idea WHERE user_id = ?;
+                """;
+
+        List<Idea> ideaList = jdbcTemplate.query(sql, ideaRowMapper, id);
+        return ideaList;
+    }
 }

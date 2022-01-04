@@ -14,4 +14,6 @@ public interface IdeaDAO {
     public void deleteIdea(int id);
 
     Optional<Idea> getIdeaById(int id);
+
+    List<Idea> getUserIdeas(Long id);
 }

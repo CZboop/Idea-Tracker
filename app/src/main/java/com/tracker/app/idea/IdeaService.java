@@ -59,4 +59,8 @@ public class IdeaService {
     public Idea getIdeaById(int id) {
         return ideaDAO.getIdeaById(id).orElseThrow(IllegalStateException::new);
     }
+
+    public List<Idea> getUserIdeas(Long id){
+        return ideaDAO.getUserIdeas(id);
+    }
 }

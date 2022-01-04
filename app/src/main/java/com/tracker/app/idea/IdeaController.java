@@ -45,4 +45,9 @@ public class IdeaController {
     public Idea getIdeaById(@PathVariable int id){
         return ideaService.getIdeaById(id);
     }
+
+    @GetMapping("userid/{id}")
+    public List<Idea> getUserIdeas(@PathVariable Long id){
+        return ideaService.getUserIdeas(id);
+    }
 }
