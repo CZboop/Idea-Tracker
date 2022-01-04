@@ -8,7 +8,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (password != confirmPassword){
+        if (password !== confirmPassword){
             alert("Your passwords do not match, please try again")
         }
         else{

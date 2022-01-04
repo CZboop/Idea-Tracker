@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import Profile from './components/Profile';
 import Navbar from './components/Navbar';
@@ -9,6 +10,27 @@ import Login from './components/Login';
 import Register from './components/Register';
 
 function App() {
+
+  const getSessionStorageOrDefault = (key, defaultValue) => {
+    const stored = sessionStorage.getItem(key);
+    if (!stored) {
+      return defaultValue;
+    }
+    return JSON.parse(stored);
+  }
+
+  const [token, setToken] = useState(getSessionStorageOrDefault('token', null));
+
+  const onLogin = (userId) => {
+    fetch(`http://localhost:8080/api/token/get/${userId}`)
+    .then(response => response.json())
+    .then(data => setToken(data))
+  }
+
+  useEffect(() => {
+    sessionStorage.setItem('token', JSON.stringify(token))
+  }, [token])
+
   return (
     <div className="App">
       <h1>Idea and Project Tracker</h1>
@@ -19,7 +41,7 @@ function App() {
               <Route exact path="/" element={<Navigate to="/home" />} /> 
               <Route path="/profile" element={<Profile  />} />
               <Route path="/home" element={<Home  />} />
-              <Route path="/login" element={<Login  />} />
+              <Route path="/login" element={<Login  onLogin={onLogin}/>} />
               <Route path="/register" element={<Register  />} />
             </>
             

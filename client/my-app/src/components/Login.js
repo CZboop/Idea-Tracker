@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({onLogin}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -22,7 +22,7 @@ const Login = () => {
                     if (data==null){
                         alert("User not found")
                     }else{
-                    console.log(data.id)}})
+                    onLogin(data.id)}})
     }
 
     return (
