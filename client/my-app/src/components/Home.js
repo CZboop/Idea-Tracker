@@ -19,7 +19,7 @@ const Home = ({token, projects}) => {
     const [ticketTitle, setTicketTitle] = useState("");
     const [ticketDetails, setTicketDetails] = useState("");
     const [ticketType, setTicketType] = useState(0);
-    const [ticketProject, setTicketProject] = useState(projectOptions? projectOptions[0].value: null);
+    const [ticketProject, setTicketProject] = useState(null);
 
     const handleIdeaPriorityChange = (e) => {
         setIdeaPriority(e.target.value)
