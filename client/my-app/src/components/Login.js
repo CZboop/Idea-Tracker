@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './Login.css'
 
 const Login = ({onLogin}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +25,9 @@ const Login = ({onLogin}) => {
                     if (data==null){
                         alert("User not found")
                     }else{
-                    onLogin(data.id)}})
+                    onLogin(data.id)
+                    
+                    navigate('/home')}})
     }
 
     return (

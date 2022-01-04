@@ -39,12 +39,12 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Navbar  onLogout={onLogout}/>
+      <Navbar  onLogout={onLogout} token={token}/>
         <Routes> 
             <>
               <Route exact path="/" element={<Navigate to="/home" />} /> 
-              <Route path="/profile" element={<Profile  />} />
-              <Route path="/home" element={<Home  />} />
+              <Route path="/profile" element={<Profile  token={token}/>} />
+              <Route path="/home" element={<Home  token={token}/>} />
               <Route path="/login" element={<Login  onLogin={onLogin}/>} />
               <Route path="/logout" element={<Logout  onLogout={onLogout}/>} />
               <Route path="/register" element={<Register  />} />
