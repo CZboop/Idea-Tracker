@@ -22,10 +22,19 @@ function App() {
 
   const [token, setToken] = useState(getSessionStorageOrDefault('token', null));
 
+  const getUserProjects = (id) => {
+    fetch(`http://localhost:8080/api/project/userid/${id}`)
+    .then(response => response.json())
+    .then(data => setProjects(data))
+    .then(data => console.log(data))
+}
+  const [projects, setProjects] = useState(null);   
+
   const onLogin = (userId) => {
     fetch(`http://localhost:8080/api/token/get/${userId}`)
     .then(response => response.json())
     .then(data => setToken(data))
+    .then(setProjects(getUserProjects(userId)))
   }
 
   const onLogout = () =>{
@@ -43,7 +52,7 @@ function App() {
         <Routes> 
             <>
               <Route exact path="/" element={<Navigate to="/home" />} /> 
-              <Route path="/profile" element={<Profile  token={token}/>} />
+              <Route path="/profile" element={<Profile  token={token} projects={projects}/>} />
               <Route path="/home" element={<Home  token={token}/>} />
               <Route path="/login" element={<Login  onLogin={onLogin}/>} />
               <Route path="/logout" element={<Logout  onLogout={onLogout}/>} />
