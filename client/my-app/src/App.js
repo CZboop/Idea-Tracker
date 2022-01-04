@@ -62,7 +62,7 @@ function App() {
             <>
               <Route exact path="/" element={<Navigate to="/home" />} /> 
               <Route path="/profile" element={<Profile  token={token} projects={projects} ideas={ideas}/>} />
-              <Route path="/home" element={<Home  token={token}/>} />
+              <Route path="/home" element={<Home  token={token} projects={projects}/>} />
               <Route path="/login" element={<Login  onLogin={onLogin}/>} />
               <Route path="/logout" element={<Logout  onLogout={onLogout}/>} />
               <Route path="/register" element={<Register  />} />

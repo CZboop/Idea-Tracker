@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './Home.css';
 
-const Home = ({token}) => {
+const Home = ({token, projects}) => {
     const [summary, setSummary] = useState("");
     const [ideaDetails, setIdeaDetails] = useState("");
     const [ideaPriority, setIdeaPriority] = useState("medium");
@@ -11,6 +11,15 @@ const Home = ({token}) => {
     // using number for status as it's an enum in the backend
     const [status, setStatus] = useState(0);
     const [projectPriority, setProjectPriority] = useState("high");
+
+    const projectOptions = projects? projects.map(project => {
+        return <option value={project.id}>{project.title}</option>
+    }) : null;
+
+    const [ticketTitle, setTicketTitle] = useState("");
+    const [ticketDetails, setTicketDetails] = useState("");
+    const [ticketType, setTicketType] = useState(0);
+    const [ticketProject, setTicketProject] = useState(projectOptions? projectOptions[0].value: null);
 
     const handleIdeaPriorityChange = (e) => {
         setIdeaPriority(e.target.value)
@@ -22,6 +31,14 @@ const Home = ({token}) => {
 
     const handleStatusChange = (e) => {
         setStatus(e.target.value)
+    }
+
+    const handleTicketProjectChange = (e) => {
+        setTicketProject(e.target.value)
+    }
+
+    const handleTicketTypeChange = (e) => {
+        setTicketType(e.target.value)
     }
 
     const handleIdeaSubmit = () => {
@@ -56,6 +73,34 @@ const Home = ({token}) => {
                     },
                     body: JSON.stringify(newProject)
                 })
+    }
+
+    const handleTicketSubmit = () => {
+        console.log("clicked");
+        let currentdate = new Date(); 
+        let datetime = "Last Sync: " + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+        const newTicket = {
+            "title" : ticketTitle,
+            "info" : ticketDetails,
+            "ticketType" : ticketType,
+            "isCompleted" : false,
+            "dateCreated": datetime,
+            "dateCompleted": null
+        }
+        console.log(newTicket);
+        fetch("http://localhost:8080/api/ticket/add", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newTicket)
+                })
+
     }
 
     return (
@@ -95,6 +140,23 @@ const Home = ({token}) => {
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
                         <option value="low">Low</option>
+                    </select>
+                    <input type="submit" value="Add"></input>
+                </form>
+
+                <form className="add-ticket-form" onSubmit={handleTicketSubmit}>
+                    <h3>New Ticket</h3>
+                    <label>Title:</label><input type="text" value={ticketTitle} onChange={(e)=>setTicketTitle(e.target.value)}></input>
+                    <label>Details:</label><textarea value={ticketDetails} onChange={(e)=>setTicketDetails(e.target.value)}></textarea>
+                    <label>Type:</label>
+                    <select value={ticketType} onChange={handleTicketTypeChange}>
+                        <option value={0}>To do</option>
+                        <option value={1}>Bug</option>
+                        <option value={2}>Note</option>
+                    </select>
+                    <label>Project:</label>
+                    <select value={ticketProject} onChange={handleTicketProjectChange}>
+                        {projectOptions}
                     </select>
                     <input type="submit" value="Add"></input>
                 </form>

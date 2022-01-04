@@ -1,3 +1,5 @@
+import './Idea.css';
+
 const Idea = ({idea}) => {
     return(
         <div className="idea-container">

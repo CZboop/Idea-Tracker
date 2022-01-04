@@ -1,4 +1,5 @@
 import TicketList from './TicketList';
+import './Project.css';
 
 const Project = ({project}) => {
     return (

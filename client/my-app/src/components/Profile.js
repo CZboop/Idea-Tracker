@@ -2,6 +2,7 @@ import {useState} from 'react';
 import { useEffect } from 'react/cjs/react.development';
 import ProjectList from './ProjectsList';
 import IdeaList from './IdeaList';
+import './Profile.css';
 
 const Profile = ({projects, ideas}) => {
     return (
