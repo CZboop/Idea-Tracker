@@ -3,17 +3,31 @@ import './Home.css';
 
 const Home = ({token}) => {
     const [summary, setSummary] = useState("");
-    const [details, setDetails] = useState("");
+    const [ideaDetails, setIdeaDetails] = useState("");
     const [ideaPriority, setIdeaPriority] = useState("medium");
 
-    const handlePriorityChange = (e) => {
+    const [title, setTitle] = useState("");
+    const [projectDetails, setProjectDetails] = useState("");
+    // using number for status as it's an enum in the backend
+    const [status, setStatus] = useState(0);
+    const [projectPriority, setProjectPriority] = useState("high");
+
+    const handleIdeaPriorityChange = (e) => {
         setIdeaPriority(e.target.value)
+    }
+
+    const handleProjectPriorityChange = (e) => {
+        setProjectPriority(e.target.value)
+    }
+
+    const handleStatusChange = (e) => {
+        setStatus(e.target.value)
     }
 
     const handleIdeaSubmit = () => {
         const newIdea = {
             "summary" : summary,
-            "details" : details,
+            "details" : ideaDetails,
             "priority" : ideaPriority,
             "userId" : token.userId
         }
@@ -24,7 +38,24 @@ const Home = ({token}) => {
                     },
                     body: JSON.stringify(newIdea)
                 })
-                // .then(response => response.json())
+    }
+
+    const handleProjectSubmit = () => {
+        const newProject = {
+            "title" : title,
+            "details" : projectDetails,
+            "priority" : projectPriority,
+            "status": status,
+            "userId" : token.userId,
+            "tickets" : []
+        }
+        fetch("http://localhost:8080/api/project/add", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newProject)
+                })
     }
 
     return (
@@ -38,9 +69,9 @@ const Home = ({token}) => {
                 <form className="add-idea-form" onSubmit={handleIdeaSubmit}>
                     <h3>New Idea</h3>
                     <label>Summary:</label><input type="text" value={summary} onChange={(e)=>setSummary(e.target.value)}></input>
-                    <label>Details:</label><input type="text" value={details} onChange={(e)=>setDetails(e.target.value)}></input>
+                    <label>Details:</label><textarea value={ideaDetails} onChange={(e)=>setIdeaDetails(e.target.value)}></textarea>
                     <label>Priority:</label>
-                    <select value={ideaPriority} onChange={handlePriorityChange}>
+                    <select value={ideaPriority} onChange={handleIdeaPriorityChange}>
                         <option value="high">High</option>
                         <option value="medium">Medium</option>
                         <option value="low">Low</option>
@@ -49,9 +80,23 @@ const Home = ({token}) => {
 
                 </form>
 
-                <form className="add-project-form">
+                <form className="add-project-form" onSubmit={handleProjectSubmit}>
                     <h3>New Project</h3>
-
+                    <label>Title:</label><input type="text" value={title} onChange={(e)=>setTitle(e.target.value)}></input>
+                    <label>Details:</label><textarea value={projectDetails} onChange={(e)=>setProjectDetails(e.target.value)}></textarea>
+                    <label>Status:</label>
+                    <select value={status} onChange={handleStatusChange}>
+                        <option value={0}>Active</option>
+                        <option value={1}>Retired</option>
+                        <option value={2}>Completed</option>
+                    </select>
+                    <label>Priority:</label>
+                    <select value={projectPriority} onChange={handleProjectPriorityChange}>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <input type="submit" value="Add"></input>
                 </form>
                 </>
                 :
