@@ -1,0 +1,17 @@
+ul{
+    display: grid;
+    grid-template-columns: 3fr repeat(5, 1fr);
+    list-style-type: none;
+    align-items: center;
+    
+}
+a{
+    text-decoration: none;
+}
+a:visited{
+    color: black;
+}
+.nav-container{
+    background-color: rgb(208, 255, 0);
+    margin: 0;
+}
