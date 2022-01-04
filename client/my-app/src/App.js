@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import Register from './components/Register';
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
     .then(data => setToken(data))
   }
 
+  const onLogout = () =>{
+    setToken(null);
+  }
+
   useEffect(() => {
     sessionStorage.setItem('token', JSON.stringify(token))
   }, [token])
@@ -35,13 +40,14 @@ function App() {
     <div className="App">
       <h1>Idea and Project Tracker</h1>
       <BrowserRouter>
-      <Navbar  />
+      <Navbar  onLogout={onLogout}/>
         <Routes> 
             <>
               <Route exact path="/" element={<Navigate to="/home" />} /> 
               <Route path="/profile" element={<Profile  />} />
               <Route path="/home" element={<Home  />} />
               <Route path="/login" element={<Login  onLogin={onLogin}/>} />
+              <Route path="/logout" element={<Logout  onLogout={onLogout}/>} />
               <Route path="/register" element={<Register  />} />
             </>
             
